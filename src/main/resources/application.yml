@@ -1,0 +1,27 @@
+
+spring:
+  application:
+    name : product-management
+
+
+  security:
+    oauth2:
+      resource server:
+        jwt:
+          issuer-uri: http://localhost:9090
+
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: qwerqwer
+    url: jdbc:postgresql://localhost:6666/product_db
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+
+server:
+    port: 8080
