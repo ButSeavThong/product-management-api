@@ -22,7 +22,7 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PreAuthorize("hasAuthority('SCOPE_write')")
+    @PreAuthorize("hasAuthority('SCOPE_openid')")
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
         ProductResponse response = productService.createProduct(request);
