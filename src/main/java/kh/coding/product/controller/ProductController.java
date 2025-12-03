@@ -29,7 +29,7 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PreAuthorize("hasAuthority('SCOPE_write')")
+    @PreAuthorize("hasAuthority('SCOPE_openid')")
     @PutMapping("/{uuid}")
     public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable String uuid,
@@ -45,7 +45,7 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    @PreAuthorize("hasAuthority('SCOPE_write')")
+    @PreAuthorize("hasAuthority('SCOPE_openid')")
     public ResponseEntity<Void> deleteProductByUuid(@PathVariable String uuid) {
         productService.deleteProductByUuid(uuid);
         return ResponseEntity.noContent().build();
