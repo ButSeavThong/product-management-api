@@ -1,15 +1,12 @@
-
 spring:
   application:
-    name : product-management
-
+    name: product-management
 
   security:
     oauth2:
-      resource server:
+      resource-server:
         jwt:
-          issuer-uri: http://localhost:9090
-
+          issuer-uri: http://localhost:9000
 
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -17,11 +14,9 @@ spring:
     password: qwerqwer
     url: jdbc:postgresql://localhost:6666/product_db
 
-
   jpa:
     hibernate:
       ddl-auto: create-drop
 
-
 server:
-    port: 8080
+  port: 8080

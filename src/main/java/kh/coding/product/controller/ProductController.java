@@ -22,14 +22,14 @@ public class ProductController {
 
     private final ProductService productService;
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_write')")
     @PostMapping
     public ResponseEntity<ProductResponse> createProduct(@Valid @RequestBody ProductCreateRequest request) {
         ProductResponse response = productService.createProduct(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    @PreAuthorize("hasAuthority('SCOPE_write')")
     @PutMapping("/{uuid}")
     public ResponseEntity<ProductResponse> updateProduct(
             @PathVariable String uuid,
@@ -45,8 +45,7 @@ public class ProductController {
         return ResponseEntity.ok(response);
     }
 
-    @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    @DeleteMapping("/{uuid}")
+    @PreAuthorize("hasAuthority('SCOPE_write')")
     public ResponseEntity<Void> deleteProductByUuid(@PathVariable String uuid) {
         productService.deleteProductByUuid(uuid);
         return ResponseEntity.noContent().build();
